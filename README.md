@@ -1,3 +1,7 @@
+https://guides.rubygems.org/make-your-own-gem/#your-first-gem
+
+https://bundler.io/guides/creating_gem.html
+
 # MiniOperation
 
 TODO: Delete this and the text below, and describe your gem
