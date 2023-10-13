@@ -9,7 +9,9 @@ Gem::Specification.new do |spec|
   spec.email = ["andreluisdurao@gmail.com"]
 
   spec.summary = "A gem to write easy to read classes that perform in order"
-  spec.description = "A ruby library to ease up writing classes that always execute methods on same order. Inspired by Trailblazer's operation interface."
+  spec.description = <<~DESC
+    A library to help writting classes that execute methods on the same order(inspired by Trailblazer)
+  DESC
   spec.homepage = "https://github.com/andredurao/mini_operation"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
