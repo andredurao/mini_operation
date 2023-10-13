@@ -12,9 +12,9 @@ module MiniOperation
 
   module ClassMethods
     def step(method_name)
-      steps = self.class_variable_get(:@@__mini_operation_steps)
+      steps = class_variable_get(:@@__mini_operation_steps)
       steps << method_name
-      self.class_variable_set(:@@__mini_operation_steps, steps)
+      class_variable_set(:@@__mini_operation_steps, steps)
     end
   end
 end
