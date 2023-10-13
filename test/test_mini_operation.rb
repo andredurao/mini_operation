@@ -23,11 +23,18 @@ class TestMiniOperation < Minitest::Test
     refute_nil ::MiniOperation::VERSION
   end
 
-  def test_it_should_initialize_a_class_variable
+  def test_it_should_initialize_steps_class_variable
     steps = FirstOp.class_variable_get(:@@__mini_operation_steps)
     assert_equal(%i[load calculate save], steps)
 
     steps = SecondOp.class_variable_get(:@@__mini_operation_steps)
     assert_equal(%i[collect format submit], steps)
+  end
+
+  def test_it_should_initialize_data_class_variable
+    data = FirstOp.class_variable_get(:@@__mini_operation_data)
+    assert_equal(%i[results errors], data.keys)
+    assert_equal({}, data[:results])
+    assert_equal({}, data[:errors])
   end
 end

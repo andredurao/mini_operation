@@ -8,6 +8,7 @@ module MiniOperation
 
   def self.included(base)
     base.class_variable_set(:@@__mini_operation_steps, [])
+    base.class_variable_set(:@@__mini_operation_data, { results: {}, errors: {} })
     base.extend(ClassMethods)
   end
 
