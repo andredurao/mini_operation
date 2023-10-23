@@ -33,8 +33,10 @@ class TestMiniOperation < Minitest::Test
 
   def test_it_should_initialize_data_class_variable
     data = FirstOp.class_variable_get(:@@__mini_operation_data)
-    assert_equal(%i[results errors], data.keys)
+    assert_equal(%i[results errors steps_map current_step], data.keys)
     assert_equal({}, data[:results])
     assert_equal({}, data[:errors])
+    assert_equal({}, data[:steps_map])
+    assert_equal(-1, data[:current_step])
   end
 end

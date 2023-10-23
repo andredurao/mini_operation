@@ -6,6 +6,10 @@ https://bundler.io/guides/creating_gem.html
 
 TODO: Delete this and the text below, and describe your gem
 
+# IDEA:
+  1. different from trailblazer operation I can store a hash with the results of each step so they are available in others
+  2. accessor last_result points to result[-1]
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mini_operation`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
