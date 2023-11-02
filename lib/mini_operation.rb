@@ -8,25 +8,33 @@ module MiniOperation
 
   def self.included(base)
     base.class_variable_set(:@@__mini_operation_steps, [])
-    base.class_variable_set(:@@__mini_operation_data, { results: {}, errors: {}, steps_map: {}, current_step: -1 })
+    base.send(:include, InstanceMethods)
     base.extend(ClassMethods)
   end
 
-  # Contains the class methods helpers like: step, previous_step, next_step and others
+  # Contains the instance method helpers like: perform, previous_step, next_step and others
+  module InstanceMethods
+    def perform
+      default_data = { results: {}, errors: {}, steps_map: {}, current_step: -1, execution_path: [] }
+      instance_variable_set(:@__mini_operation_data, default_data)
+
+      steps = self.class.class_variable_get(:@@__mini_operation_steps)
+      steps.each_with_index do |step, index|
+        @__mini_operation_data[:current_step] = index
+        @__mini_operation_data[:results][step] = send(step)
+        @__mini_operation_data[:execution_path] << step
+      rescue StandardError => e
+        @__mini_operation_data[:errors][step] = e
+      end
+    end
+  end
+
+  # Contains the class methods helpers like: step
   module ClassMethods
     def step(method_name)
       steps = class_variable_get(:@@__mini_operation_steps)
       steps << method_name
       class_variable_set(:@@__mini_operation_steps, steps)
-    end
-
-    def perform
-      @@__mini_operation_steps.each_with_index do |step, index|
-        @@__mini_operation_data[:current_step] = index
-        @@__mini_operation_data[:results][step] = send(step)
-      rescue StandardError => e
-        @@__mini_operation_data[:errors][step] = e
-      end
     end
   end
 end
