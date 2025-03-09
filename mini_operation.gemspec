@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors = ["Andre Durao"]
   spec.email = ["andreluisdurao@gmail.com"]
 
-  spec.summary = "A gem to write easy to read classes that perform in order"
+  spec.summary = "A gem for writing easy-to-read classes that execute ordered steps"
   spec.description = <<~DESC
-    A library to help writting classes that execute methods on the same order(inspired by Trailblazer)
+    A library to help write classes that execute methods in the same order (inspired by Trailblazer).
   DESC
   spec.homepage = "https://github.com/andredurao/mini_operation"
   spec.license = "MIT"
