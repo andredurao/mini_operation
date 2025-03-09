@@ -76,6 +76,12 @@ my_op = MyOp.new
 my_op.perform
 ```
 
+### Build & Publish:
+
+1. Build the gem: `gem build mini_operation.gemspec`
+2. Publish: `gem push mini_operation-[VERSION].gem`
+3. TODO: ⬆️ Create a github action for CI/CD
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/andredurao/mini_operation. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/andredurao/mini_operation/blob/master/CODE_OF_CONDUCT.md).
