@@ -4,11 +4,33 @@ https://bundler.io/guides/creating_gem.html
 
 # MiniOperation
 
-TODO: Delete this and the text below, and describe your gem
+This is a ruby gem inspired on Trailblazer's Operation, but with less features and using composition.
 
-# IDEA:
-  1. different from trailblazer operation I can store a hash with the results of each step so they are available in others
-  2. accessor last_result points to result[-1]
+With this gem you can create your operations like this:
+
+```ruby
+class MyOperation
+  include MiniOperation
+
+  step :load
+  step :calculate
+  step :save
+
+  private
+
+  def load
+    # do something
+  end
+
+  def calculate
+    # do something else
+  end
+
+  def save
+    # and finally this
+  end
+end
+```
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mini_operation`. To experiment with that code, run `bin/console` for an interactive prompt.
 
@@ -36,7 +58,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mini_operation. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/mini_operation/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/andredurao/mini_operation. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/andredurao/mini_operation/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -44,4 +66,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the MiniOperation project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mini_operation/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the MiniOperation project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/andredurao/mini_operation/blob/master/CODE_OF_CONDUCT.md).
