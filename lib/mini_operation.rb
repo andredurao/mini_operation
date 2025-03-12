@@ -20,12 +20,22 @@ module MiniOperation
 
       steps = self.class.class_variable_get(:@@__mini_operation_steps)
       steps.each_with_index do |step, index|
-        @__mini_operation_data[:current_step] = index
-        @__mini_operation_data[:results][step] = method(step).call
-        @__mini_operation_data[:execution_path] << step
+        invoke(step, index) { method(step).call }
       rescue StandardError => e
         @__mini_operation_data[:errors][step] = e
+        raise
       end
+    end
+
+    # Set execution related variables and execute the step
+    #
+    # @param step [Symbol] the step name
+    # @param index [Integer] the index of the step that is called
+    # @yield the step that is being executed
+    def invoke(step, index, &block)
+      @__mini_operation_data[:current_step] = index
+      @__mini_operation_data[:execution_path] << step
+      @__mini_operation_data[:results][step] = block.call
     end
   end
 

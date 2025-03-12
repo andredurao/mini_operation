@@ -10,9 +10,7 @@ class FirstOp
   step :save
 
   def load; end
-
   def calculate; end
-
   def save; end
 end
 
@@ -24,9 +22,7 @@ class SecondOp
   step :submit
 
   def collect; end
-
   def format; end
-
   def submit; end
 end
 
