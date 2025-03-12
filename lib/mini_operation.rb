@@ -21,7 +21,7 @@ module MiniOperation
       steps = self.class.class_variable_get(:@@__mini_operation_steps)
       steps.each_with_index do |step, index|
         @__mini_operation_data[:current_step] = index
-        @__mini_operation_data[:results][step] = send(step)
+        @__mini_operation_data[:results][step] = method(step).call
         @__mini_operation_data[:execution_path] << step
       rescue StandardError => e
         @__mini_operation_data[:errors][step] = e
