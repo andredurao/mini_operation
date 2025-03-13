@@ -14,17 +14,26 @@ module MiniOperation
 
   # Contains the instance method helpers like: perform, previous_step, next_step and others
   module InstanceMethods
+    # Execute the steps
+    #
+    # @return [Object] the result of the last step executed
     def perform
       default_data = { results: {}, errors: {}, steps_map: {}, current_step: -1, execution_path: [] }
       instance_variable_set(:@__mini_operation_data, default_data)
 
-      steps = self.class.class_variable_get(:@@__mini_operation_steps)
       steps.each_with_index do |step, index|
         invoke(step, index) { method(step).call }
       rescue StandardError => e
         @__mini_operation_data[:errors][step] = e
         raise
       end
+    end
+
+    # The array of steps that were added
+    #
+    # @return [Array<Symbol>] the steps in an array
+    def steps
+      self.class.class_variable_get(:@@__mini_operation_steps)
     end
 
     # Set execution related variables and execute the step
